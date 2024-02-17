@@ -1,0 +1,72 @@
+:host {
+  display: block;
+}
+
+.hero-section {
+  background-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 0.01%,
+      rgba(41, 41, 41, 0) 100%
+    ),
+    url("/assets/travel.svg");
+
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.book-btn {
+  border: 2px solid #f5f5f5;
+  box-shadow: inset 0 0 0 0 #0b7285;
+}
+
+.book-btn:hover {
+  box-shadow: inset 8.5em 0 0 0 #0b7285;
+  border: 2px solid #0b7285;
+  transition: all 500ms ease-in-out;
+}
+
+.scroller {
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+.scroller__inner {
+  display: flex;
+  gap: 1rem;
+  padding-block: 4rem;
+  flex-wrap: wrap;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+
+  mask: linear-gradient(
+    90deg,
+    transparent,
+    #f3f0eb 20%,
+    #f3f0eb 80%,
+    transparent
+  );
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: fit-content;
+  flex-wrap: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.scroller[data-animated="true"]:hover .scroller__inner {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(
+      calc(-50% - 0.5rem)
+    ); /*0.5 rem is half of gap between items*/
+  }
+}

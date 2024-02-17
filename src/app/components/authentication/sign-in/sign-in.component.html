@@ -1,0 +1,51 @@
+<div
+  class="grid grid-cols-2 max-md:grid-cols-1 bg-[#e7e4df] dark:bg-[#202020] w-[900px] max-md:w-[350px] mx-auto mt-24 rounded-lg shadow-lg shadow-neutral-400 dark:shadow-sm"
+>
+  <div class="pt-20">
+    <p
+      class="text-center text-[#052B32] dark:text-[#F5F5F5] text-3xl font-medium"
+    >
+      Sign In
+    </p>
+
+    <form
+      [formGroup]="signInForm"
+      (ngSubmit)="signIn()"
+      class="w-[70%] mx-auto pt-3"
+    >
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pb-1">
+        Email <span class="text-red-600">*</span>
+      </p>
+      <input
+        type="text"
+        placeholder="john21@gmail.com"
+        class="p-1 border border-neutral-300 bg-gray-100 rounded-lg w-full"
+        formControlName="email"
+      />
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-4 pb-1">
+        Password <span class="text-red-600">*</span>
+      </p>
+      <input
+        type="password"
+        placeholder="Enter your password"
+        class="p-1 border border-neutral-300 bg-gray-100 rounded-lg w-full"
+        formControlName="password"
+      />
+      <div class="flex items-center gap-4">
+        <button
+          [disabled]="!signInForm.valid"
+          class="text-[#F5F5F5] px-6 py-3 my-6 rounded-lg bg-[#0b7285] hover:bg-[#095c6b] duration-300 disabled:bg-gray-400"
+        >
+          Submit
+        </button>
+        <p
+          class="text-sm text-gray-500 dark:text-gray-200 cursor-pointer underline"
+          [routerLink]="['/sign-up']"
+        >
+          Create an account
+        </p>
+      </div>
+    </form>
+  </div>
+  <img class="rounded-r-lg max-md:hidden" src="assets/signin-image.svg" />
+</div>

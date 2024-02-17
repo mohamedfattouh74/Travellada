@@ -1,0 +1,16 @@
+<div id="map" class="rounded-lg dark:-hue-rotate-180 dark:brightness-75">
+  <div class="country-filter">
+    <mat-form-field>
+      <mat-label>Zoom To Country</mat-label>
+      <mat-select
+        (selectionChange)="zoomCountry($event)"
+        name="countries"
+        formControlName="country"
+      >
+        @for (country of countries; track country) {
+        <mat-option [value]="country">{{ country }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

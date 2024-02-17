@@ -1,0 +1,21 @@
+#map {
+  flex: 1;
+  height: 100% !important;
+  width: 100% !important;
+  position: relative;
+}
+
+.country-filter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 10px;
+  position: absolute;
+  top: 12px;
+  left: 44px;
+  z-index: 999;
+}
+
+.leaflet-popup-content p {
+  margin: 5px 0 !important;
+}

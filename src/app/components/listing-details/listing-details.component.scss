@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.listing-img {
+  width: 1200px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.listing-img:hover {
+  filter: brightness(0.9);
+  transition: all 300ms ease-in-out;
+}
+
+.apartment-numbers::after {
+  content: "";
+  width: 1000px;
+  height: 1px;
+  margin-top: 40px;
+  margin-left: 100px;
+  background-color: #cdd1d2;
+
+  & {
+    @media (max-width: 1199px) {
+      margin-left: 40px;
+      width: 600px;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .apartment-numbers::after {
+    width: 200px;
+  }
+}
+
+.strict {
+  color: #ab0707;
+}
+
+.moderate {
+  color: #d2760b;
+}
+
+.flexible {
+  color: #07ab66;
+}

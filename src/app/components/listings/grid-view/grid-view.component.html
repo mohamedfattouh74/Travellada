@@ -1,0 +1,82 @@
+@defer () {
+<div class="flex justify-end mx-24 max-md:mx-8">
+  <button
+    class="border border-gray-300 rounded-md p-2 bg-[#dfdfdfd1] hover:bg-[#bcbbbbe4] duration-500 flex gap-2 items-center"
+    (click)="openFiltersDialog()"
+  >
+    <img width="24px" src="assets/filter-icon.svg" />
+    <p>Filters</p>
+  </button>
+</div>
+<div
+  class="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 mx-20 max-md:mx-8 my-6 gap-x-5 gap-y-10"
+>
+  @for (listing of listings() | paginate : { itemsPerPage: tableSize,
+  currentPage: page, totalItems: count }; track $index ) {
+  <div
+    (click)="setSelectedListing(listing.id)"
+    class="listing-card rounded-2xl relative border-1 border-transparent duration-500 hover:border-1 hover:border-neutral-300 hover:shadow-md shadow-[#f3f0ebc0] cursor-pointer p-2"
+  >
+    <img
+      class="w-full h-[200px] rounded-2xl"
+      id="listing-image"
+      [src]="listing?.xl_picture_url"
+      onerror="this.src='assets/image-placeholder.png'"
+    />
+
+    <div class="card-text py-3 mx-1">
+      <div class="flex justify-between items-center">
+        <p class="text-[#052B32] dark:text-[#F5F5F5] font-semibold text-xl">
+          {{ listing.smart_location }}
+        </p>
+        <p
+          matTooltip="Cancellation Policy"
+          class="text-[#052B32] font-semibold text-sm pr-2"
+          [ngClass]="{ strict: listing.cancellation_policy == 'strict',
+                           moderate: listing.cancellation_policy == 'moderate',
+                           flexible: listing.cancellation_policy == 'flexible', }"
+        >
+          {{ listing.cancellation_policy | titlecase }}
+        </p>
+      </div>
+
+      <p class="text-[#898989] text-sm py-1 font-medium">{{ listing.name }}</p>
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2 font-medium">
+        <strong>${{ listing.price }}</strong> night
+      </p>
+    </div>
+  </div>
+
+  }
+</div>
+
+<div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onPageChange($event)"
+  >
+  </pagination-controls>
+</div>
+
+} @placeholder(minimum 1s) {
+<div
+  class="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 mx-20 max-md:mx-8 my-6 gap-x-5 gap-y-10"
+>
+  @for (listing of listings() | paginate : { itemsPerPage: tableSize,
+  currentPage: page, totalItems: count }; track $index ) {
+  <div class="rounded-2xl relative p-2 animate-pulse">
+    <div
+      class="w-full h-[200px] rounded-2xl bg-[#d3d0cb] dark:bg-[#545353]"
+    ></div>
+
+    <div class="card-text py-3 mx-1">
+      <div>
+        <div class="bg-[#d3d0cb] dark:bg-[#545353] h-6"></div>
+      </div>
+    </div>
+  </div>
+
+  }
+</div>
+}

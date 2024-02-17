@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+
+.mat-mdc-slider{
+  width: 95% !important;
+}
+
+
+
+.mat-mdc-slider.mat-warn { --mdc-slider-handle-color: #0b7285; --mdc-slider-focus-handle-color: #0b7285; }
+
+.mat-mdc-slider.mat-warn { --mdc-slider-active-track-color: #0b7285; --mdc-slider-inactive-track-color: #0b7285; }
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px;
+}

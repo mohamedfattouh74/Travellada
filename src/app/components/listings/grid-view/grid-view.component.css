@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.listing-card:hover {
+  transform: scale(1.02);
+}
+
+:host {
+  display: block;
+}
+
+.strict {
+  color: #ab0707;
+}
+
+.moderate {
+  color: #d2760b;
+}
+
+.flexible {
+  color: #07ab66;
+}

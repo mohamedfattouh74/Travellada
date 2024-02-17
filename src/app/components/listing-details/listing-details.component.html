@@ -1,0 +1,288 @@
+<div
+  class="page-container mx-52 max-lg:mx-24 max-md:mx-12"
+  *ngIf="selectedListing"
+>
+  <p class="text-[#052B32] dark:text-[#F5F5F5] text-3xl font-medium pt-8">
+    {{ selectedListing.name }}
+  </p>
+  <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+    <span> {{ selectedListing.country }}</span
+    >,
+    <span>{{ selectedListing.city }}</span>
+  </p>
+  <img
+    class="mt-8 rounded-xl listing-img"
+    [src]="selectedListing.xl_picture_url"
+    onerror="this.src='./assets/image-placeholder.png'"
+  />
+  <div class="flex justify-between items-center mt-8">
+    <p class="text-[#052B32] dark:text-[#F5F5F5] text-2xl">
+      {{ selectedListing.street }}
+    </p>
+    <p
+      matTooltip="Cancellation Policy"
+      class="text-[#052B32] font-semibold text-sm pr-2"
+      [ngClass]="{ strict: selectedListing.cancellation_policy == 'strict',
+                           moderate: selectedListing.cancellation_policy == 'moderate',
+                           flexible: selectedListing.cancellation_policy == 'flexible', }"
+    >
+      {{ selectedListing.cancellation_policy | titlecase }}
+    </p>
+  </div>
+
+  <div
+    class="grid grid-cols-4 max-md:grid-cols-2 max-md:gap-4 mt-12 apartment-numbers"
+  >
+    <div class="flex items-center gap-1">
+      <svg
+        width="34"
+        height="36"
+        viewBox="0 0 34 36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M16.2555 0.333313C18.1848 0.333313 19.7735 1.79246 19.9778 3.66741L22.9167 3.66665C24.9015 3.66665 26.526 5.20858 26.658 7.1599L26.6667 7.41665V15.6231C25.8642 15.4336 25.0272 15.3333 24.1667 15.3333V7.41665C24.1667 6.78381 23.6963 6.26083 23.0863 6.17806L22.9167 6.16665L19.3627 6.16801C18.6902 7.16586 17.5495 7.82215 16.2555 7.82215H10.4111C9.11718 7.82215 7.97657 7.16586 7.30395 6.16801L3.75 6.16665C3.11717 6.16665 2.59418 6.6369 2.51142 7.24703L2.5 7.41665V29.9243C2.5 30.5571 2.97025 31.0801 3.58038 31.1628L3.75 31.1743H14.5577C15.0373 32.0928 15.6448 32.934 16.3567 33.6743H3.75C1.76523 33.6743 0.1406 32.1323 0.00864983 30.181L0 29.9243V7.41665C0 5.43188 1.54193 3.80725 3.49325 3.6753L3.75 3.66665L6.6889 3.66741C6.89325 1.79246 8.48177 0.333313 10.4111 0.333313H16.2555ZM16.2555 2.83331H10.4111C9.72382 2.83331 9.16667 3.39046 9.16667 4.07773C9.16667 4.76501 9.72382 5.32215 10.4111 5.32215H16.2555C16.9428 5.32215 17.5 4.76501 17.5 4.07773C17.5 3.39046 16.9428 2.83331 16.2555 2.83331Z"
+          fill="#052B32"
+        />
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M8.75008 20.3258H15.0412C13.9602 22.0113 13.3334 24.0158 13.3334 26.1666C13.3334 26.7328 13.3769 27.2888 13.4606 27.8315L13.3334 27.832C9.12015 27.832 6.66675 26.3173 6.66675 23.238V22.4091C6.66675 21.2586 7.59948 20.3258 8.75008 20.3258Z"
+          fill="#052B32"
+        />
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M13.3334 10.3259C15.6346 10.3259 17.5001 12.1913 17.5001 14.4925C17.5001 16.7937 15.6346 18.6592 13.3334 18.6592C11.0322 18.6592 9.16675 16.7937 9.16675 14.4925C9.16675 12.1913 11.0322 10.3259 13.3334 10.3259Z"
+          fill="#052B32"
+        />
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M33.3333 26.1667C33.3333 21.104 29.2293 17 24.1667 17C19.104 17 15 21.104 15 26.1667C15 31.2293 19.104 35.3333 24.1667 35.3333C29.2293 35.3333 33.3333 31.2293 33.3333 26.1667ZM25.001 27L25.0018 31.1725C25.0018 31.6328 24.6288 32.0058 24.1685 32.0058C23.7083 32.0058 23.3352 31.6328 23.3352 31.1725L23.3343 27H19.1602C18.7 27 18.3268 26.627 18.3268 26.1667C18.3268 25.7065 18.7 25.3333 19.1602 25.3333H23.3342L23.3333 21.1655C23.3333 20.7052 23.7065 20.3322 24.1667 20.3322C24.6268 20.3322 25 20.7052 25 21.1655L25.0008 25.3333H29.1717C29.632 25.3333 30.005 25.7065 30.005 26.1667C30.005 26.627 29.632 27 29.1717 27H25.001Z"
+          fill="#052B32"
+        />
+      </svg>
+
+      @if (selectedListing.guests_included>1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.guests_included }} guests
+      </p>
+      } @else if (selectedListing.guests_included==1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.guests_included }} guest
+      </p>
+      } @else if (selectedListing.guests_included==0) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">Not Specified</p>
+      }
+    </div>
+    <div class="flex items-center gap-1">
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M33.75 0V37.5H40V40H0V37.5H6.25V0H33.75ZM27.5 16.25H25V26.25H27.5V16.25Z"
+          fill="#052B32"
+        />
+      </svg>
+
+      @if (selectedListing.bedrooms>1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.bedrooms }} bedrooms
+      </p>
+      } @else if (selectedListing.bedrooms==1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.bedrooms }} bedroom
+      </p>
+      } @else if (selectedListing.bedrooms==0) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">Not Specified</p>
+      }
+    </div>
+    <div class="flex items-center gap-1">
+      <svg
+        class="pt-1"
+        width="57"
+        height="22"
+        viewBox="0 0 57 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M53.0188 7.11527V10.6976H6.80824V0.275269H0V10.6976V18.5153V21.0741H6.80824V17.4282H53.0188V21.0741H56.3294V7.11527H53.0188Z"
+          fill="#052B32"
+        />
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M14.0329 6.84706C15.9529 6.84706 17.5093 5.31429 17.5093 3.42353C17.5093 1.53277 15.9529 0 14.0329 0C12.1129 0 10.5564 1.53277 10.5564 3.42353C10.5564 5.31429 12.1129 6.84706 14.0329 6.84706Z"
+          fill="#052B32"
+        />
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M49.3483 7.05174H21.1907V3.99527C21.1907 1.88468 23.4601 0.172913 26.2519 0.172913H44.2836C47.0824 0.172913 49.3483 1.88468 49.3483 3.99527V7.05174Z"
+          fill="#052B32"
+        />
+      </svg>
+
+      @if (selectedListing.beds>1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.beds }} beds
+      </p>
+      } @else if (selectedListing.beds==1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.beds }} bed
+      </p>
+      } @else if (selectedListing.beds==0) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">Not Specified</p>
+      }
+    </div>
+    <div class="flex items-center gap-1">
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="dark:stroke-[#F5F5F5] dark:fill-[#F5F5F5]"
+          d="M38 20H8V8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4H16C16.7996 4.00138 17.5805 4.24241 18.2418 4.69196C18.9031 5.14151 19.4145 5.77895 19.71 6.522C18.5824 7.08341 17.6361 7.95159 16.9798 9.02676C16.3235 10.1019 15.9839 11.3405 16 12.6V13.912C15.9942 14.1804 16.0413 14.4474 16.1386 14.6976C16.236 14.9479 16.3817 15.1764 16.5674 15.3703C16.7531 15.5643 16.9753 15.7197 17.2211 15.8277C17.4669 15.9357 17.7316 15.9943 18 16H26C26.5414 15.9884 27.0562 15.7625 27.4311 15.3718C27.8061 14.981 28.0107 14.4575 28 13.916V12.25C28.0143 10.9467 27.6176 9.6721 26.8661 8.6072C26.1146 7.5423 25.0467 6.7413 23.814 6.318C23.4296 4.53051 22.4445 2.92863 21.0227 1.77907C19.601 0.629512 17.8284 0.00164139 16 0H12C9.87827 0 7.84344 0.842855 6.34315 2.34315C4.84285 3.84344 4 5.87827 4 8V20H2C1.46957 20 0.960859 20.2107 0.585786 20.5858C0.210714 20.9609 0 21.4696 0 22C0 22.5304 0.210714 23.0391 0.585786 23.4142C0.960859 23.7893 1.46957 24 2 24H4V30C4 31.0609 4.42143 32.0783 5.17157 32.8284C5.92172 33.5786 6.93913 34 8 34V38C8 38.5304 8.21071 39.0391 8.58579 39.4142C8.96086 39.7893 9.46957 40 10 40C10.5304 40 11.0391 39.7893 11.4142 39.4142C11.7893 39.0391 12 38.5304 12 38V34H28V38C28 38.5304 28.2107 39.0391 28.5858 39.4142C28.9609 39.7893 29.4696 40 30 40C30.5304 40 31.0391 39.7893 31.4142 39.4142C31.7893 39.0391 32 38.5304 32 38V34C33.0609 34 34.0783 33.5786 34.8284 32.8284C35.5786 32.0783 36 31.0609 36 30V24H38C38.5304 24 39.0391 23.7893 39.4142 23.4142C39.7893 23.0391 40 22.5304 40 22C40 21.4696 39.7893 20.9609 39.4142 20.5858C39.0391 20.2107 38.5304 20 38 20Z"
+          fill="#052B32"
+        />
+      </svg>
+
+      @if (selectedListing.bathrooms>1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.bathrooms }} bathrooms
+      </p>
+      } @else if (selectedListing.bathrooms==1) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">
+        {{ selectedListing.bathrooms }} bathroom
+      </p>
+      } @else if (selectedListing.bathrooms==0) {
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-2">Not Specified</p>
+      }
+    </div>
+  </div>
+  <div class="grid grid-cols-2 max-lg:grid-cols-1">
+    <div>
+      <p class="text-[#052B32] dark:text-[#F5F5F5] pt-8 pb-8">
+        {{ selectedListing.summary }} beds
+      </p>
+
+      <div class="mt-12">
+        <div class="flex items-start">
+          <img
+            [src]="selectedListing.host_picture_url"
+            class="rounded-full w-[60px]"
+            onerror="this.src='./assets/image-placeholder.png'"
+          />
+          <div class="ml-4">
+            <p class="text-[#052B32] dark:text-[#F5F5F5] text-xl font-medium">
+              Hosted by {{ selectedListing.host_name }}
+            </p>
+            <p class="text-[#052B32] dark:text-[#F5F5F5]">
+              {{ selectedListing.host_about }}
+            </p>
+            <div class="mt-4">
+              <p class="text-[#484848] dark:text-[#d2d2d2]">
+                Response rate:
+                {{
+                  selectedListing.host_response_rate
+                    ? selectedListing.host_response_rate
+                    : 90
+                }}%
+              </p>
+              <p class="text-[#484848] dark:text-[#d2d2d2]">
+                Response time:
+                {{
+                  selectedListing.host_response_time
+                    ? selectedListing.host_response_time
+                    : "within a day"
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="amenities mt-20 dark:text-[#F5F5F5]">
+        <p class="text-2xl font-medium">Amenities</p>
+        <div class="grid grid-cols-2 gap-6 mt-12">
+          @for (amenity of selectedListing.amenities; track $index) {
+          <div class="flex items-center gap-2">
+            <img src="/assets/check.svg" />
+            <p class="text-wrap amenitie">{{ amenity }}</p>
+          </div>
+
+          }
+        </div>
+      </div>
+    </div>
+    <div
+      class="reserve-form mt-8 text-[#052B32] dark:text-[#F5F5F5] flex justify-end max-md:justify-center items-start"
+    >
+      <div
+        class="sticky top-0 w-[70%] border border-gray-200 p-8 rounded-lg shadow-lg max-md:w-full max-md:p-2 shadow-neutral-400 dark:shadow-neutral-600"
+      >
+        <p class="mb-4 text-xl">
+          <strong>${{ selectedListing.price }}</strong> Night
+        </p>
+        <input
+          (bsValueChange)="calculateTotal($event)"
+          type="text"
+          placeholder="Choose Reservation Date"
+          class="form-control p-4 mb-4 w-full rounded-lg border border-neutral-300 bg-neutral-100 dark:text-black"
+          bsDaterangepicker
+          [minDate]="minDate"
+          [(ngModel)]="selectedDate"
+          [bsConfig]="{
+            adaptivePosition: true,
+            isAnimated: true,
+            containerClass: 'theme-default'
+          }"
+        />
+        <button
+          (click)="reserveClicked()"
+          class="text-[#F5F5F5] w-full mx-auto px-6 py-3 rounded-lg bg-[#0b7285] hover:bg-[#095c6b] duration-300 mb-3"
+        >
+          Reserve
+        </button>
+        <p class="text-center text-gray-600 dark:text-[#F5F5F5] mb-6">
+          You won't be charged yet.
+        </p>
+        <div class="flex justify-between items-center mb-4">
+          <p class="underline">
+            ${{ selectedListing.price }} X
+            <span> {{ numberOfNights }} nights</span>
+          </p>
+          <p>${{ selectedListing.price * numberOfNights }}</p>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+          <p class="underline">Cleaning Fee</p>
+          <p>${{ cleaningFee }}</p>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+          <p class="underline">Service Fee</p>
+          <p>${{ serviceFee }}</p>
+        </div>
+        <hr />
+        <div class="flex justify-between items-center mt-4">
+          <p class="font-medium">Total</p>
+          <p>
+            ${{
+              selectedListing.price * numberOfNights + serviceFee + cleaningFee
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

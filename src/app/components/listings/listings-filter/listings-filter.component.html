@@ -1,0 +1,74 @@
+<div class="bg-[#f4f3f1] dark:bg-[#191919]">
+  <h1
+    class="text-center p-4 text-xl text-[#052B32] dark:text-[#F5F5F5] font-semibold tracking-wide"
+    mat-dialog-title
+  >
+    Filters
+  </h1>
+  <hr />
+  <form [formGroup]="filtersForm" (ngSubmit)="submitFilters(this.filtersForm)">
+    <div class="p-8">
+      <p class="text-2xl text-[#052B32] dark:text-[#F5F5F5] pb-1 font-medium">
+        Price Range
+      </p>
+      <p class="text-[#484848] dark:text-[#a7a7a7] pb-8">
+        Nightly prices before fees and taxes
+      </p>
+      <mat-slider min="1" max="3000" step="1" discrete color="warn">
+        <input matSliderStartThumb formControlName="priceStart" />
+        <input matSliderEndThumb formControlName="priceEnd" />
+      </mat-slider>
+    </div>
+    <hr />
+    <div class="p-8">
+      <p class="text-2xl text-[#052B32] dark:text-[#F5F5F5] pb-1 font-medium">
+        Choose a country
+      </p>
+      <p class="text-[#484848] dark:text-[#a7a7a7] pb-8">
+        Nightly prices before fees and taxes
+      </p>
+      <mat-form-field class="w-full">
+        <mat-label>Choose a country</mat-label>
+        <mat-select name="countries" formControlName="country">
+          @for (country of countries; track country) {
+          <mat-option [value]="country">{{ country }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <hr />
+    <div class="p-8">
+      <p class="text-2xl text-[#052B32] dark:text-[#F5F5F5] pb-1 font-medium">
+        Cancellation Policy
+      </p>
+      <p class="text-[#484848] dark:text-[#a7a7a7] pb-8">
+        Choose the cancellation policy suitable for you
+      </p>
+      <mat-form-field class="w-full">
+        <mat-label>Choose cancellation policy</mat-label>
+        <mat-select
+          name="cancellationPolicy"
+          formControlName="cancellationPolicy"
+        >
+          @for (policy of cancellationPolicies; track policy) {
+          <mat-option [value]="policy">{{ policy | titlecase }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="p-8 flex justify-end items-center gap-2">
+      <button
+        class="py-3 px-6 rounded-lg border border-[#c0c0c0] dark:text-[#F5F5F5] dark:hover:bg-neutral-800 hover:bg-neutral-100 duration-300 text-[#0b7285]"
+        (click)="clearFilters()"
+      >
+        Clear
+      </button>
+      <button
+        class="py-3 px-6 rounded-lg border-1 border-transparent bg-[#0b7285] hover:bg-[#085360] duration-300 text-[#F5F5F5]"
+        type="submit"
+      >
+        Apply
+      </button>
+    </div>
+  </form>
+</div>

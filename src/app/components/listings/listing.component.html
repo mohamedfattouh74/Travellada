@@ -1,0 +1,21 @@
+<div class="flex justify-center gap-4 mx-20 mt-12 mb-6">
+  <div class="border border-gray-300 dark:border-gray-800 rounded-md">
+    <button
+      class="p-2 text-[#052B32] dark:text-[#F5F5F5] rounded-l-md"
+      [routerLink]="['grid']"
+      routerLinkActive="active"
+      matTooltip="Grid View"
+    >
+      <p>Grid</p>
+    </button>
+    <button
+      class="p-2 text-[#052B32] dark:text-[#F5F5F5] rounded-r-md"
+      [routerLink]="['map']"
+      routerLinkActive="active"
+      matTooltip="Map View"
+    >
+      <p>Map</p>
+    </button>
+  </div>
+</div>
+<router-outlet></router-outlet>
